@@ -1,0 +1,82 @@
+<!-- views/multi-step-form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activist Ally - Multi-Step Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Activist Ally</h1>
+            <ul>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="my-events.html">My Events</a></li>
+                <li><a href="chat.html">Chat</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="project-management.html">Project Management</a></li>
+                <li><a href="multi-step-form.html">Multi-Step Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="multi-step-form-section">
+            <h2>Multi-Step Registration Form</h2>
+            <form id="multi-step-form">
+                <div class="step">
+                    <h3>Step 1: Personal Information</h3>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                    <button type="button" class="next">Next</button>
+                </div>
+                <div class="step">
+                    <h3>Step 2: Event Details</h3>
+                    <label for="event-name">Event Name:</label>
+                    <input type="text" id="event-name" required>
+                    <button type="button" class="prev">Previous</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const steps = document.querySelectorAll('.step');
+        const nextButtons = document.querySelectorAll('.next');
+        const prevButtons = document.querySelectorAll('.prev');
+
+        let currentStep = 0;
+
+        function showStep(step) {
+            steps.forEach((s, index) => {
+                s.style.display = index === step ? 'block' : 'none';
+            });
+        }
+
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        showStep(currentStep);
+    </script>
+</body>
+</html>

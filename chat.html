@@ -1,0 +1,53 @@
+<!-- views/chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activist Ally - Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Activist Ally</h1>
+            <ul>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="my-events.html">My Events</a></li>
+                <li><a href="chat.html">Chat</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="project-management.html">Project Management</a></li>
+                <li><a href="multi-step-form.html">Multi-Step Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="chat-section">
+            <h2>Chat Room</h2>
+            <div class="chat-container">
+                <div class="message-box" id="message-box"></div>
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-button">Send</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const messageBox = document.getElementById('message-box');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value;
+            if (message) {
+                const newMessage = document.createElement('div');
+                newMessage.textContent = message;
+                messageBox.appendChild(newMessage);
+                messageInput.value = '';
+                messageBox.scrollTop = messageBox.scrollHeight; // Scroll to bottom
+            }
+        });
+    </script>
+</body>
+</html>
